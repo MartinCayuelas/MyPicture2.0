@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MyPicture2.0</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/myPicture.css" rel="stylesheet">
+
+    <!-- JS -->
+
+     <script src="js/myPicture.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div><img class="logo" src="img/Logo.jpg" alt="Logo"></div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"></h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8 photo" id="photo">
+                <img class="img-responsive" id="imgBase" src="http://placehold.it/750x500" alt="">
+            </div>
+
+            <div class="col-md-4">
+                <p>Veuillez choisir une image afin de pouvoir utiliser MyPicture2.0</p>
+               <div class="dropdown">
+                  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownChoix" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                   Choisir une image
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownChoix">
+                    <li><a id="paysage" href="#" onclick="defiltre();affichePaysage();">Paysage</a></li>
+                    <li><a id="voiture" href="#" onclick="defiltre();afficheVoiture();">Voiture</a></li>
+                    <li><a id="animal" href="#" onclick="defiltre();afficheAnimal();">Animal</a></li>
+                    <li><a id="ny" href="#" onclick="defiltre();afficheNy();">New-York</a></li>
+                    <li><a id="temple" href="#" onclick="defiltre();afficheTemple();">Temple</a></li>
+                    <li><a id="tour" href="#" onclick="defiltre();afficheTour();">Tour Eiffel</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#" onclick="defiltre();afficheRandom();">Aléatoire</a></li>
+                  </ul>
+                </div>
+                
+               <hr>
+               <button type="button" class="btn btn-default" id="clear" onclick="defiltre();">Effacer</button>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <!-- Related Projects Row -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h3 class="page-header">Options</h3>
+            </div>
+
+
+            <div class="col-sm-3 col-xs-6">
+                
+                <h4>
+                Filtres
+                </h4>
+                <div>
+                 <button type="button" class="btn btn-default" id="opacity" onclick="defiltre();filtreOpacity();">Atténuer</button>
+                <button type="button" class="btn btn-default" id="inverse"  onclick="defiltre();filtreInverse();">Inversion</button>
+                <button type="button" class="btn btn-default" id="grey" onclick="defiltre();filtreGrey();">Gris</button>
+                </div>
+                <hr>
+                <div>
+                <button type="button" class="btn btn-default" id="flou" onclick="defiltre();filtreFlou();">Flou</button>
+                <button type="button" class="btn btn-default" id="lumineux" onclick="defiltre();filtreLumineux();">Lumineux</button>
+                <button type="button" class="btn btn-default" id="contrast" onclick="defiltre();filtreContrast();">Contrast</button>
+
+                </div>
+                <hr>
+                <div id="moreOption"><a href="#Plus" onclick="moreFiltre();"><span class="glyphicon glyphicon-plus plus" id="more"></span></a></div>
+                    <div id="Plus" style="display: none;">
+                    <div>
+                     <button type="button" class="btn btn-default" id="rotation" onclick="defiltre();filtreRotation();">Rotation</button>
+                    <button type="button" class="btn btn-default" id="saturation" onclick="defiltre();filtreSaturation();">Saturation</button>
+                    <button type="button" class="btn btn-default" id="sepia" onclick="defiltre();filtreSepia();">Sepia</button>
+                    </div>
+                    <hr>
+                    <div>
+                      <button type="button" class="btn btn-default" id="rouge" onclick="defiltre();filtreRouge();">Ombre Rouge</button>
+                       <button type="button" class="btn btn-default" id="vert" onclick="defiltre();filtreVert();">Ombre Verte</button>
+                    
+                     <button type="button" class="btn btn-default" id="bleu" onclick="defiltre();filtreBleu();">Ombre Bleu</button>
+                     </div>
+                </div>
+             </div>
+            
+
+            <div class="col-sm-3 col-xs-6">
+            <div>
+                <h4>
+                Combinaison de Filtres
+                </h4>
+                <div class="btn-group" data-toggle="buttons">
+                  <button type="button" class="btn btn-success" id="yes" onclick="addCombinaison();">Oui</button>
+                  
+                   <button type="button" class="btn btn-danger" id="no" onclick="removeCombinaison();">Non</button>
+                 </div>
+            </div>
+                <div id="CombiFiltre">
+
+                </div>
+                    
+            </div>
+            <div class="col-sm-3 col-xs-6">
+                <h4>
+                Editeur
+                </h4>
+                <div class="form-group">
+                  
+                    <input type="text" class="form" id="imput" placeholder="Filtre">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; MyPicture2.0</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
